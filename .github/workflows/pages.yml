@@ -46,6 +46,11 @@ jobs:
       - name: Build static site
         run: vendor/okf-loom/scripts/okf-loom build kb --target static --out public
 
+      # A static host has no live editing studio. okf-loom would hide this banner with studio.css, but the
+      # static build does not load that file, so visitors would see "Live studio unavailable" on every page.
+      - name: Remove the live-studio banner from the built pages
+        run: find public -name '*.html' -exec sed -i '/okf-studio-fallback-banner/d' {} +
+
       - name: Check built site (links, graph)
         run: python3 check_site.py public
 
