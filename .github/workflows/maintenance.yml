@@ -1,0 +1,45 @@
+# ABOUTME: Weekly upkeep: finds dead external links and pinned GitHub sources that moved on, and tracks each in one issue.
+# ABOUTME: Findings never fail the build; they open or update an issue, and the issue closes itself when the check is clean.
+name: Knowledge base maintenance
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: check
+        run: python3 maintenance.py links --out report-links.md
+      - name: Open, update or close the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          bash .github/scripts/upsert-issue.sh "KB maintenance: dead links" report-links.md "${{ steps.check.outputs.findings }}"
+
+  sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 maintenance.py repos --out report-sources.md
+      - name: Open, update or close the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          bash .github/scripts/upsert-issue.sh "KB maintenance: sources that moved on" report-sources.md "${{ steps.check.outputs.findings }}"

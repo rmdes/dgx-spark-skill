@@ -21,7 +21,8 @@ cited source and has not been reproduced here.
 
 **Start here:** the [Models × Sparks matrix](/models/spark-matrix.md) lists every published Spark recipe, how many Sparks
 it needs and how fast it runs, and [coding agents on local models](/stacks/coding-agents-on-local-models.md) covers the
-gateway pattern that makes a local stack usable by a team.
+gateway pattern that makes a local stack usable by a team. The [reference stack](/stacks/local-ai-reference-stack.md)
+page maps a real single-Spark setup onto this knowledge base and keeps a backlog of what to test next.
 
 | Section | Question it answers |
 |---|---|

@@ -19,6 +19,7 @@ Inference engines and orchestration used on Sparks, and when to pick each.
 # guide
 
 * [Coding agents on local models](/stacks/coding-agents-on-local-models.md) - How to wire opencode, Claude Code, pi, Hermes, Aider, Continue, Open WebUI and OpenAI SDK clients to models served on DGX Sparks directly or through a gateway, and the traps that bite in daily use.
+* [Reference stack: local-ai, and what to adopt next](/stacks/local-ai-reference-stack.md) - Maps a real single-Spark stack (local-ai - vLLM behind LiteLLM, with apps) onto this knowledge base - which community practices it already follows, and a backlog of what to test and adopt next, each with the page that justifies it.
 
 # reference
 

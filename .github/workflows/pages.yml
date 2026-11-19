@@ -28,7 +28,9 @@ jobs:
           python-version: "3.12"
 
       - name: Tooling tests
-        run: python3 test_clip.py
+        run: |
+          python3 test_clip.py
+          python3 test_maintenance.py
 
       - name: Generated indexes are up to date
         run: |

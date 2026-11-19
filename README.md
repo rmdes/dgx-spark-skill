@@ -14,8 +14,10 @@ GitHub Actions*).
 | `clip.py` | Collector: GitHub URL → whole-repo ingest (docs, recipes, charts); other URL → defuddle clip. |
 | `test_clip.py` | Assert-based checks for `clip.py` (`python3 test_clip.py`). |
 | `benchmarks/` | Raw llama-benchy results and scripts: an NVIDIA Founders Edition and a Dell Pro Max GB10, same command. |
+| `maintenance.py` + `test_maintenance.py` | Weekly upkeep checks (dead links, pinned GitHub sources that moved on), run by `.github/workflows/maintenance.yml`. |
 | `check_site.py` | Smoke check of a built site: every local link has a target, graph not empty (`python3 check_site.py <dir>`). |
 | `.github/workflows/pages.yml` | CI: validate, build, check, and deploy to GitHub Pages on push to `main`. |
+| `.github/workflows/maintenance.yml` | Weekly: opens or updates one issue each for dead links and for sources that moved on, and closes it when clean. |
 | `vendor/okf-loom/` | [okf-loom](https://github.com/ojamin/okf-loom) runtime (Apache-2.0, Python 3.12+), pinned in `VENDORED.md`. |
 
 ## Read it
@@ -66,6 +68,13 @@ Sources go to an Obsidian vault (`$OBSIDIAN_VAULT`, default `~/Obsidian`, folder
 ```
 
 Lines marked `# MANUAL` in `sources.txt` block scrapers and were clipped by hand with Obsidian Web Clipper.
+
+## Keeping it current
+
+A weekly workflow runs `python3 maintenance.py links` and `python3 maintenance.py repos` and tracks the result in issues
+labelled `kb-maintenance`. For the sources that moved on: re-read the changed docs, update the affected pages and their
+dates, then re-pin the commit in the citation URLs. The [reference stack page](kb/stacks/local-ai-reference-stack.md)
+holds the backlog of practices to test next.
 
 ## Upgrading okf-loom
 
