@@ -2,6 +2,8 @@
 <!-- ABOUTME: Published as a site on GitHub Pages; raw sources live in the maintainer's Obsidian vault. -->
 # dgx-spark-skill
 
+**Read it online: <https://rmdes.github.io/dgx-spark-skill/>**
+
 A community knowledge base on running and clustering NVIDIA DGX Spark (GB10) for fully local AI work, with one, two or
 more Sparks: hardware limits, cabling and NCCL, serving stacks, which model needs how many Sparks, and field reports from
 people who already do this daily. Published as a site on GitHub Pages (enable it under *Settings → Pages → Source:
