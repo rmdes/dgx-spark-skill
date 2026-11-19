@@ -23,7 +23,7 @@ jobs:
 
       # Deliberately no `pip install`: okf-loom then uses its stricter built-in YAML parser, so a
       # frontmatter value that only passes under PyYAML fails here (see README).
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
