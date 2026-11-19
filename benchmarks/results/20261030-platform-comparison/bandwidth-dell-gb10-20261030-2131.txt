@@ -1,0 +1,6 @@
+host dell-gb10  2026-10-30T21:31:42+01:00  buffers 1 GiB x2  MemAvailable 51 GiB
+gpu before: 0 %, 2405 MHz
+run 1: copy  244.3 GB/s   read  231.6 GB/s
+run 2: copy  246.6 GB/s   read  239.2 GB/s
+run 3: copy  248.2 GB/s   read  239.9 GB/s
+NVIDIA GB10 torch 2.13.0+cu130

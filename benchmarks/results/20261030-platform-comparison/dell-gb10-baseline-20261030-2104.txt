@@ -1,0 +1,40 @@
+== host
+dell-gb10
+ 21:04:25 up  2:14,  3 users,  load average: 0.58, 0.52, 0.53
+== kernel
+7.0.0-1024-nvidia
+== dgx os
+DGX_SWBUILD_VERSION="7.2.3"
+DGX_OTA_VERSION="7.5.0"
+DGX_OTA_DATE="Tue Jun 23 13:41:16 CEST 2026"
+DGX_OTA_VERSION="7.6.0"
+DGX_OTA_DATE="mer. 23 sept. 2026 08:32:57 CEST"
+== gpu
+name, driver_version, vbios_version, pstate, temperature.gpu, power.draw [W], clocks.current.sm [MHz], clocks.max.sm [MHz], utilization.gpu [%], clocks_event_reasons.active
+NVIDIA GB10, 580.178.04, 9A.0B.2D.00.00, P0, 38, 11.06 W, 2405 MHz, 3003 MHz, 0 %, 0x0000000000000000
+== nvidia modules
+loaded: 4
+package for the running kernel:
+  linux-modules-nvidia-580-open-7.0.0-1024-nvidia 7.0.0-1024.25~24.04.1
+  linux-modules-nvidia-fs-7.0.0-1024-nvidia 7.0.0-1024.25~24.04.1
+driver package:
+  nvidia-driver-580-open 580.178.04-0ubuntu0.24.04.1
+== memory
+               total        used        free      shared  buff/cache   available
+Mem:             121          70          42           0          12          51
+Swap:             15           0          15
+== containers
+spark-vllm  ghcr.io/spark-arena/dgx-vllm-eugr-nightly  Up About an hour (healthy)
+spark-litellm-db  postgres:16.15-alpine  Up 2 hours (healthy)
+spark-vllm-embed  ghcr.io/spark-arena/dgx-vllm-eugr-nightly  Up 2 hours (healthy)
+spark-vllm-rerank  ghcr.io/spark-arena/dgx-vllm-eugr-nightly  Up 2 hours (healthy)
+litellm  ghcr.io/berriai/litellm-database:v1.104.0  Up 2 hours
+== vllm images
+spark-vllm ghcr.io/spark-arena/dgx-vllm-eugr-nightly@sha256:6d5afe0e7d904b8113512ebefc943d2b50ded6cc770dc65d749eab627adfb6cd
+spark-vllm-embed ghcr.io/spark-arena/dgx-vllm-eugr-nightly@sha256:7bb73915fd1e3813b585e3eb664f792d954e044c46f2668232d4f0ecee021572
+spark-vllm-rerank ghcr.io/spark-arena/dgx-vllm-eugr-nightly@sha256:7bb73915fd1e3813b585e3eb664f792d954e044c46f2668232d4f0ecee021572
+== ollama
+NAME    ID    SIZE    PROCESSOR    CONTEXT    UNTIL 
+== vllm queue
+vllm:num_requests_running 0.0
+vllm:num_requests_waiting 0.0

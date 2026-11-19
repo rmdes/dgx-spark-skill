@@ -1,0 +1,4 @@
+.claude/
+public/
+__pycache__/
+.playwright-mcp/

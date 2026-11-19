@@ -1,0 +1,70 @@
+# ABOUTME: Validates the OKF knowledge base, builds the static site and publishes it to GitHub Pages.
+# ABOUTME: Pull requests run the same checks without deploying; only pushes to main deploy.
+name: Knowledge base site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Deliberately no `pip install`: okf-loom then uses its stricter built-in YAML parser, so a
+      # frontmatter value that only passes under PyYAML fails here (see README).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tooling tests
+        run: python3 test_clip.py
+
+      - name: Generated indexes are up to date
+        run: |
+          vendor/okf-loom/scripts/okf-loom index kb
+          git diff --exit-code -- kb || {
+            echo "::error::Section index.md files are stale. Run 'vendor/okf-loom/scripts/okf-loom index kb' and commit."
+            exit 1
+          }
+
+      - name: Validate bundle (strict)
+        run: vendor/okf-loom/scripts/okf-loom validate kb --strict
+
+      - name: Build static site
+        run: vendor/okf-loom/scripts/okf-loom build kb --target static --out public
+
+      - name: Check built site (links, graph)
+        run: python3 check_site.py public
+
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: public
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

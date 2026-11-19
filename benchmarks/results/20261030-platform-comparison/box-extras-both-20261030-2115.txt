@@ -1,0 +1,234 @@
+################ nvidia-fe
+== bios/firmware
+bios_version: 5.36_0ACUM027
+bios_date: 06/12/2026
+board_name: P4242
+product_name: NVIDIA_DGX_Spark
+== cmdline
+BOOT_IMAGE=/boot/vmlinuz-7.0.0-1019-nvidia root=UUID=9bceebd5-f583-4fdd-810f-606ede05f89e ro init_on_alloc=0 iommu.passthrough=0 console=tty0 plymouth.ignore-serial-consoles plymouth.use-simpledrm earlycon=uart,mmio32,0x16A00000 console=tty0 console=ttyS0,921600 crashkernel=1G-:0M quiet splash initcall_blacklist=tegra234_cbb_init kho=off pci=pcie_bus_safe vt.handoff=7
+== cpu
+governor: performance      20 performance 
+max kHz per policy:      10 2808000      10 3900000 
+cur kHz: min 2808000 med 2808000 max 3900000
+== thp/vm
+thp: always [madvise] never defrag: always defer defer+madvise [madvise] never
+60 0 0 
+== power profile
+n/a
+== gpu clocks/power
+GPU 0000000F:01:00.0
+ Performance State : P0
+ Clocks Event Reasons
+ Idle : Not Active
+ Applications Clocks Setting : Not Active
+ SW Power Cap : Not Active
+ HW Slowdown : Not Active
+ HW Thermal Slowdown : Not Active
+ HW Power Brake Slowdown : Not Active
+ Sync Boost : Not Active
+ SW Thermal Slowdown : Not Active
+ Display Clock Setting : Not Active
+ Clocks Event Reasons Counters
+ SW Power Capping : 24247481 us
+ Sync Boost : 0 us
+ SW Thermal Slowdown : 0 us
+ HW Thermal Slowdown : 0 us
+ HW Power Braking : 0 us
+ Sparse Operation Mode : N/A
+ GPU Power Readings
+ Average Power Draw : 38.91 W
+ Instantaneous Power Draw : 38.22 W
+ Current Power Limit : N/A
+ Requested Power Limit : N/A
+ Default Power Limit : N/A
+ Min Power Limit : N/A
+ Max Power Limit : N/A
+ Power Samples
+ Duration : Not Found
+ Number of Samples : Not Found
+ Max : Not Found
+ Min : Not Found
+ Avg : Not Found
+ GPU Memory Power Readings 
+ Average Power Draw : N/A
+ Instantaneous Power Draw : N/A
+ Module Power Readings
+ Average Power Draw : N/A
+ Instantaneous Power Draw : N/A
+ Current Power Limit : N/A
+ Requested Power Limit : N/A
+ Default Power Limit : N/A
+ Min Power Limit : N/A
+ Max Power Limit : N/A
+ Clocks
+== gpu processes
+3296840, VLLM::EngineCore, 5635 MiB
+3297963, VLLM::EngineCore, 5505 MiB
+2555711, VLLM::EngineCore, 70670 MiB
+35404 G 203MiB
+35581 G 476MiB
+36091 G 57MiB
+1743399 G 121MiB
+2152327 G 41MiB
+2555711 C 70670MiB
+3086790 G 182MiB
+3118866 G 46MiB
+3296840 C 5635MiB
+3297963 C 5505MiB
+3302882 G 82MiB
+== display/rdp
+active inactive active
+display procs: 2
+== top cpu (5s avg)
+49.0% dtop
+29.3% VLLM::E+
+19.3% vivaldi+
+10.8% vivaldi+
+8.6% gnome-s+
+6.0% waveterm
+5.2% dgxtop
+3.2% vllm
+2.8% Xorg
+2.8% waveterm
+2.6% VLLM::E+
+2.6% VLLM::E+
+2.4% dgxtop
+== all containers
+11
+local-ai-vllm litellm-1 local-ai-vllm-embed local-ai-vllm-rerank local-ai-dozzle-1 local-ai-owner-proxy-1 local-ai-hermes-1 local-ai-searxng-1 local-ai-open-webui-1 local-ai-openclaw-gateway-1 local-ai-litellm-db-1
+== container stats
+local-ai-vllm cpu=51.60% mem=2.495GiB / 121.7GiB
+litellm-1 cpu=3.95% mem=841.3MiB / 121.7GiB
+local-ai-vllm-embed cpu=2.70% mem=193.2MiB / 121.7GiB
+local-ai-vllm-rerank cpu=2.57% mem=197.2MiB / 121.7GiB
+local-ai-openclaw-gateway-1 cpu=1.89% mem=1.181GiB / 121.7GiB
+local-ai-litellm-db-1 cpu=0.71% mem=273.3MiB / 121.7GiB
+local-ai-dozzle-1 cpu=0.59% mem=34.6MiB / 121.7GiB
+local-ai-open-webui-1 cpu=0.57% mem=487.9MiB / 121.7GiB
+local-ai-hermes-1 cpu=0.57% mem=460.2MiB / 121.7GiB
+local-ai-searxng-1 cpu=0.35% mem=19.03MiB / 121.7GiB
+local-ai-owner-proxy-1 cpu=0.21% mem=23.65MiB / 121.7GiB
+== vllm container limits (local-ai-vllm)
+cpuset= nanocpus=0 shm=67108864 ipc=host net=local-ai_default privileged=false ulimits=[map[Hard:-1 Name:memlock Soft:-1] map[Hard:67108864 Name:stack Soft:67108864]] seccomp=<local-ai custom profile (io_uring allowed), elided> runtime=runc
+== vllm args
+["/bin/bash" "/serve.sh"] ["/opt/nvidia/nvidia_entrypoint.sh"] ["/bin/bash" "/serve.sh"] 
+== vllm env names
+ CMAKE_BUILD_PARALLEL_LEVEL CUDA_VERSION DEBIAN_FRONTEND DG_JIT_USE_NVRTC FLASHINFER_CUDA_ARCH_LIST INSTANTTENSOR_IO_DEPTH LD_LIBRARY_PATH LIBRARY_PATH MAKEFLAGS MAX_JOBS NCCL_VERSION NINJAFLAGS NVARCH NV_CUDA_CUDART_DEV_VERSION NV_CUDA_CUDART_VERSION NV_CUDA_LIB_VERSION NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE NV_CUDA_NSIGHT_COMPUTE_VERSION NVIDIA_DRIVER_CAPABILITIES NVIDIA_PRODUCT_NAME NVIDIA_REQUIRE_CUDA NVIDIA_VISIBLE_DEVICES NV_LIBCUBLAS_DEV_PACKAGE NV_LIBCUBLAS_DEV_PACKAGE_NAME NV_LIBCUBLAS_DEV_VERSION NV_LIBCUBLAS_PACKAGE NV_LIBCUBLAS_PACKAGE_NAME NV_LIBCUBLAS_VERSION NV_LIBCUSPARSE_DEV_VERSION NV_LIBCUSPARSE_VERSION NV_LIBNCCL_DEV_PACKAGE NV_LIBNCCL_DEV_PACKAGE_NAME NV_LIBNCCL_DEV_PACKAGE_VERSION NV_LIBNCCL_PACKAGE NV_LIBNCCL_PACKAGE_NAME NV_LIBNCCL_PACKAGE_VERSION NV_LIBNPP_DEV_PACKAGE NV_LIBNPP_DEV_VERSION NV_LIBNPP_PACKAGE NV_LIBNPP_VERSION NV_NVML_DEV_VERSION NV_NVTX_VERSION PIP_BREAK_SYSTEM_PACKAGES PIP_CACHE_DIR TIKTOKEN_ENCODINGS_BASE TORCH_CUDA_ARCH_LIST TRITON_PTXAS_PATH USE_CUDNN UV_BREAK_SYSTEM_PACKAGES UV_CACHE_DIR UV_LINK_MODE UV_SYSTEM_PYTHON VLLM_BASE_DIR VLLM_WSL2_ENABLE_PIN_MEMORY
+== vllm env (safe tuning vars)
+CUDA_VERSION=13.0.2
+NCCL_VERSION=2.28.3-1
+VLLM_BASE_DIR=/workspace/vllm
+TORCH_CUDA_ARCH_LIST=12.1a
+################ dell-gb10
+== bios/firmware
+bios_version: 5.36_4.1.0
+bios_date: 10/08/2025
+board_name: 038RY7
+product_name: Dell Pro Max with GB10 FCM1253
+== cmdline
+BOOT_IMAGE=/boot/vmlinuz-7.0.0-1024-nvidia root=UUID=6e9a3bc1-e570-4ea6-91c3-74c7bbb1784e ro init_on_alloc=0 iommu.passthrough=0 console=tty0 plymouth.ignore-serial-consoles plymouth.use-simpledrm earlycon=uart,mmio32,0x16A00000 console=tty0 console=ttyS0,921600 crashkernel=1G-:0M quiet splash initcall_blacklist=tegra234_cbb_init kho=off pci=pcie_bus_safe vt.handoff=7
+== cpu
+governor: performance      20 performance 
+max kHz per policy:      10 2808000      10 3900000 
+cur kHz: min 2808000 med 2808000 max 3900000
+== thp/vm
+thp: always [madvise] never defrag: always defer defer+madvise [madvise] never
+15 0 0 
+== power profile
+n/a
+== gpu clocks/power
+GPU 0000000F:01:00.0
+ Performance State : P0
+ Clocks Event Reasons
+ Idle : Not Active
+ Applications Clocks Setting : Not Active
+ SW Power Cap : Not Active
+ HW Slowdown : Not Active
+ HW Thermal Slowdown : Not Active
+ HW Power Brake Slowdown : Not Active
+ Sync Boost : Not Active
+ SW Thermal Slowdown : Not Active
+ Display Clock Setting : Not Active
+ Clocks Event Reasons Counters
+ SW Power Capping : 1000088 us
+ Sync Boost : 0 us
+ SW Thermal Slowdown : 0 us
+ HW Thermal Slowdown : 0 us
+ HW Power Braking : 0 us
+ Sparse Operation Mode : N/A
+ GPU Power Readings
+ Average Power Draw : 11.04 W
+ Instantaneous Power Draw : 10.93 W
+ Current Power Limit : N/A
+ Requested Power Limit : N/A
+ Default Power Limit : N/A
+ Min Power Limit : N/A
+ Max Power Limit : N/A
+ Power Samples
+ Duration : Not Found
+ Number of Samples : Not Found
+ Max : Not Found
+ Min : Not Found
+ Avg : Not Found
+ GPU Memory Power Readings 
+ Average Power Draw : N/A
+ Instantaneous Power Draw : N/A
+ Module Power Readings
+ Average Power Draw : N/A
+ Instantaneous Power Draw : N/A
+ Current Power Limit : N/A
+ Requested Power Limit : N/A
+ Default Power Limit : N/A
+ Min Power Limit : N/A
+ Max Power Limit : N/A
+ Clocks
+== gpu processes
+10113, VLLM::EngineCore, 1637 MiB
+10106, VLLM::EngineCore, 1617 MiB
+598072, VLLM::EngineCore, 46324 MiB
+3441 G 43MiB
+5090 G 16MiB
+10106 C 1617MiB
+10113 C 1637MiB
+598072 C 46324MiB
+== display/rdp
+active inactive active
+display procs: 2
+== top cpu (5s avg)
+3.2% dgxtop
+2.2% VLLM::E+
+2.0% VLLM::E+
+1.8% VLLM::E+
+1.2% promtail
+1.0% dockerd
+1.0% rustdesk
+0.8% mysqld
+0.8% dgxtop
+0.6% contain+
+0.6% tmux:
+0.6% dtop
+0.6% dgxtop
+== all containers
+9
+spark-vllm spark-litellm-db promtail postgres-exporter dozzle node-exporter spark-vllm-embed spark-vllm-rerank spark-litellm
+== container stats
+litellm cpu=7.88% mem=801.7MiB / 121.6GiB
+spark-vllm cpu=2.53% mem=3.902GiB / 121.6GiB
+spark-vllm-embed cpu=2.10% mem=6.047GiB / 121.6GiB
+spark-vllm-rerank cpu=2.01% mem=5.984GiB / 121.6GiB
+promtail cpu=1.23% mem=127.9MiB / 121.6GiB
+spark-litellm-db cpu=0.33% mem=188.4MiB / 121.6GiB
+postgres-exporter cpu=0.00% mem=12.93MiB / 121.6GiB
+node-exporter cpu=0.00% mem=11.3MiB / 121.6GiB
+dozzle cpu=0.00% mem=52.72MiB / 121.6GiB
+== vllm container limits (spark-vllm)
+cpuset= nanocpus=0 shm=67108864 ipc=host net=stack_default privileged=false ulimits=[map[Hard:-1 Name:memlock Soft:-1] map[Hard:67108864 Name:stack Soft:67108864]] seccomp=<local-ai custom profile (io_uring allowed), elided> runtime=runc
+== vllm args
+["/bin/bash" "/serve.sh"] ["/opt/nvidia/nvidia_entrypoint.sh"] ["/bin/bash" "/serve.sh"] 
+== vllm env names
+ CMAKE_BUILD_PARALLEL_LEVEL CUDA_VERSION DEBIAN_FRONTEND DG_JIT_USE_NVRTC FLASHINFER_CUDA_ARCH_LIST INSTANTTENSOR_IO_DEPTH LD_LIBRARY_PATH LIBRARY_PATH MAKEFLAGS MAX_JOBS NCCL_VERSION NINJAFLAGS NVARCH NVIDIA_DRIVER_CAPABILITIES NVIDIA_PRODUCT_NAME NVIDIA_REQUIRE_CUDA NVIDIA_VISIBLE_DEVICES NV_CUDA_CUDART_DEV_VERSION NV_CUDA_CUDART_VERSION NV_CUDA_LIB_VERSION NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE NV_CUDA_NSIGHT_COMPUTE_VERSION NV_LIBCUBLAS_DEV_PACKAGE NV_LIBCUBLAS_DEV_PACKAGE_NAME NV_LIBCUBLAS_DEV_VERSION NV_LIBCUBLAS_PACKAGE NV_LIBCUBLAS_PACKAGE_NAME NV_LIBCUBLAS_VERSION NV_LIBCUSPARSE_DEV_VERSION NV_LIBCUSPARSE_VERSION NV_LIBNCCL_DEV_PACKAGE NV_LIBNCCL_DEV_PACKAGE_NAME NV_LIBNCCL_DEV_PACKAGE_VERSION NV_LIBNCCL_PACKAGE NV_LIBNCCL_PACKAGE_NAME NV_LIBNCCL_PACKAGE_VERSION NV_LIBNPP_DEV_PACKAGE NV_LIBNPP_DEV_VERSION NV_LIBNPP_PACKAGE NV_LIBNPP_VERSION NV_NVML_DEV_VERSION NV_NVTX_VERSION PIP_BREAK_SYSTEM_PACKAGES PIP_CACHE_DIR TIKTOKEN_ENCODINGS_BASE TORCH_CUDA_ARCH_LIST TRITON_PTXAS_PATH USE_CUDNN UV_BREAK_SYSTEM_PACKAGES UV_CACHE_DIR UV_LINK_MODE UV_SYSTEM_PYTHON VLLM_BASE_DIR VLLM_WSL2_ENABLE_PIN_MEMORY
+== vllm env (safe tuning vars)
+CUDA_VERSION=13.0.2
+NCCL_VERSION=2.28.3-1
+VLLM_BASE_DIR=/workspace/vllm
+TORCH_CUDA_ARCH_LIST=12.1a

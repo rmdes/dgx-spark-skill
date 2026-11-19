@@ -1,0 +1,118 @@
+# ABOUTME: Manifest of every source in the DGX Spark knowledge base; re-ingest all with:
+# ABOUTME:   ./clip.py $(grep -vE '^\s*(#|$)' sources.txt)
+# GitHub URLs = whole-repo ingest (docs + recipes + images) into Sources/<repo>/; others = defuddle clip into Sources/web/.
+
+## --- Clustering stack (sparkring / sparkcache) ---
+https://github.com/MiaAI-Lab/sparkring
+https://github.com/FujitsuPolycom/sparkcache
+
+## --- Official NVIDIA ---
+https://docs.nvidia.com/dgx/dgx-spark/index.html
+https://docs.nvidia.com/dgx/dgx-spark/hardware.html
+https://docs.nvidia.com/dgx/dgx-spark/spark-clustering.html
+https://docs.nvidia.com/dgx/dgx-spark/release-notes.html
+https://docs.nvidia.com/sync/latest/cluster-assistant.html
+https://github.com/NVIDIA/dgx-spark-playbooks
+https://build.nvidia.com/spark
+https://build.nvidia.com/spark/multi-sparks-through-switch
+https://build.nvidia.com/spark/speculative-decoding
+https://developer.nvidia.com/blog/scaling-autonomous-ai-agents-and-workloads-with-nvidia-dgx-spark/
+https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/
+https://forums.developer.nvidia.com/t/dgx-spark-sm121-software-support-is-severely-lacking-official-roadmap-needed/357663
+
+## --- Handbook + community overviews ---
+https://huggingface.co/blog/exolabs/the-dgx-spark-handbook
+https://blog.exolabs.net/nvidia-dgx-spark/
+https://huggingface.co/blog/nvidia/speed-bench
+https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/
+https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/
+https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/2/
+https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/3/
+https://www.servethehome.com/nvidia-dgx-spark-review-the-gb10-machine-is-so-freaking-cool/4/
+# (the review has 4 pages; /5/ silently serves page 1)
+https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-dgx-spark-update-cuts-idle-power-by-32-percent-or-more-hot-plug-detection-on-connectx-nic-makes-for-a-more-efficient-ai-workstation
+https://app.notion.com/p/State-of-Local-AI-2026-3e1d8f75e0b780bebb80d4d064c90ef3
+
+## --- Clustering: cables, switches, multi-node ---
+https://www.exxactcorp.com/blog/deep-learning/what-you-need-to-build-a-4x-nvidia-dgx-spark-cluster-switch-cabling-power
+https://www.servethehome.com/mikrotik-achieves-400gbe-in-our-mikrotik-crs812-8ds-2dq-2ddq-rm-review-keysight-cyperf-arm-marvell/
+https://docs.vllm.ai/en/latest/serving/parallelism_scaling.html
+https://github.com/vllm-project/vllm/issues/36821
+
+## --- Field reports: teams running local AI for daily dev ---
+https://blog.alexellis.io/local-ai-is-not-opus/
+https://blog.alexellis.io/how-and-why-we-bought-4-dgx-sparks/
+
+## --- Clipped manually with Obsidian Web Clipper (sites block scrapers) ---
+# MANUAL https://petronellatech.com/hardware/dgx-spark-cluster-cable/
+# MANUAL https://petronellatech.com/blog/dgx-spark-cluster-from-two-sparks-to-a-switched-fabric/
+# MANUAL https://whitepapers.openzeka.com/papers/dgx-spark-2node-cluster-setup/
+# MANUAL https://whitepapers.openzeka.com/papers/dgx-spark-3node-cluster-setup/
+# MANUAL https://whitepapers.openzeka.com/papers/dgx-spark-4node-cluster-setup/
+# MANUAL https://whitepapers.openzeka.com/papers/llm-quantization-selection/
+# MANUAL https://whitepapers.openzeka.com/papers/local-llm-guide/
+# TODO-MANUAL https://petronellatech.com/blog/dgx-spark-cluster-bandwidth-what-400g-really-means/
+# TODO-MANUAL https://petronellatech.com/blog/dgx-spark-cluster-cables-in-stock-0-5m-qsfp112-400g-dac-for-every-gb10-workstation-159-shipped/
+
+## --- GB10 cluster guide (capetron, CC-BY-4.0): BOM, 2/3-node, switched fabric, validation ---
+https://github.com/capetron/gb10-cluster-guide
+https://github.com/capetron/gb10-cluster-check
+
+## --- Pricing ---
+https://pi3g.com/nvidia-dgx-spark-price/
+
+## --- mia-ai.net model catalog: Sparks needed + prompt + recipe per model ---
+https://mia-ai.net/models
+https://mia-ai.net/models/tier-list
+https://mia-ai.net/models/Qwen3.8-27B-DGX-Spark-TensorFold
+https://mia-ai.net/models/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold
+https://mia-ai.net/models/Qwen3.8-Flash-Dual-DGX-Sparks-TensorFold
+https://mia-ai.net/models/Nemotron-3.5-Bolt-TensorFold-DGX-Spark
+https://mia-ai.net/models/GLM-5.3-Flash-EXL3-2x-DGX-Sparks-TensorFold
+https://mia-ai.net/models/GLM-5.3-EXL3-3x-DGX-Sparks-TensorFold
+https://mia-ai.net/models/DeepSeek-V4.1-Flash-1017-4x-DGX-Sparks-TensorFold
+# skipped: /models/GLM-5.3-Flash-EXL3-{2x,4x}-RTX-PRO-6000-TensorFold (RTX PRO only, no Spark)
+https://github.com/ashhart/TensorFold
+https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark
+https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-1017-2x-DGX-Sparks
+https://github.com/MiaAI-Lab/MiMo-V2.6-Flash-2x-DGX-Sparks
+https://github.com/MiaAI-Lab/Ling-3.0-Flash-SGLang-DSpark-DGX-Spark
+https://github.com/MiaAI-Lab/Laguna-S-2.1-DGX-Spark-RTX-6000-PRO
+https://github.com/MiaAI-Lab/Muse-Glimmer-30B-DGX-Spark-RTX-5090-6000-PRO
+https://github.com/MiaAI-Lab/Nemotron3.5-Lightning-DGX-Spark-RTX-5090-6000-PRO
+https://github.com/MiaAI-Lab/Ornith-1.5-122B-TensorFold
+# skipped: MiaAI-Lab Qwen3.8-27B-{NVFP4-RTX-5090,RTX-6000-PRO-SGLang-DSpark,16gb-NVIDIA-GPUs-one-click-install} (no Spark)
+
+## --- Model recipes: 1x / 2x / 4x Spark ---
+https://github.com/MiaAI-Lab/Unsloth-Qwen3.6-35b-NVFP4-DGX-Spark
+https://github.com/MiaAI-Lab/Qwen3.8-27B-SGLang-DGX-Spark
+https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark
+https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Dual-DGX-Sparks
+https://github.com/MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks
+https://github.com/MiaAI-Lab/glm-5.3-flash-4x-dgx-spark-switchless
+https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-DGX-Sparks
+https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks
+https://github.com/0xSero/GLM-5.3-Flash-DGX-Spark
+https://github.com/0xSero/GLM-5.3-Flash-EXL3-1x-DGX-Spark
+https://github.com/0xSero/deepseek-v4-flash-0731-spark-sparkinfer
+
+## --- Tooling ---
+https://github.com/MiaAI-Lab/sparkDash
+https://github.com/0xSero/local-ai-registry
+https://github.com/gittensor-ai-lab/sparkinfer
+https://github.com/local-inference-lab/b12x
+https://github.com/local-inference-lab/lil
+
+## --- Skipped from the handbook (reason) ---
+# x.com/0xSero/* (~30 posts)       login wall, not fetchable
+# reddit.com                       blocked for bots
+# cdn-uploads.huggingface.co/*     images, stay hotlinked in the handbook note
+# huggingface.co/<model cards>     model cards, add per model when we pick one
+# exllamav3 / LMCache / CerebrasResearch/reap   general libraries, not Spark-specific
+# videocardz.com (2 pricing posts), marketplace.nvidia.com cable  not picked
+# up.codes, utilitydive, rtx-5090, arnon.dk, gb300, dgx-station   off-topic for this KB
+
+## --- Known bad clips in the vault (found while writing kb/, 2026-10-29) ---
+# web/"Speculative Decoding (build.nvidia.com).md"   is the TensorRT-LLM README, not the playbook; kb uses dgx-spark-playbooks instead
+# web/"DGX Spark 3-Node AI Cluster Setup Guide.md"   OpenZeka content is their 4-node guide; no 3-node OpenZeka content exists
+# web/"State of Local AI 2026.md"                    only intro + glossary captured (Notion lazy-loads); weak evidence
